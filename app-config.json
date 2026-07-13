@@ -5,7 +5,8 @@
     { "id": "today",      "label": "Today",      "icon": "◉",  "page": "at-church.html" },
     { "id": "visit",      "label": "Visit",      "icon": "⌖",  "page": "geo" },
     { "id": "ministries", "label": "Ministries", "icon": "♥",  "page": "ministries.html" },
-    { "id": "connect",    "label": "Connect",    "icon": "✉",  "page": "connect.html" }
+    { "id": "connect",    "label": "Connect",    "icon": "✉",  "page": "connect.html" },
+    { "id": "test",       "label": "Test",       "icon": "🎉", "page": "test.html" }
   ],
   "geofence": {
     "lat": 36.4157,
