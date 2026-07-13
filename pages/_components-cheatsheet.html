@@ -1,0 +1,60 @@
+<!-- COMPONENT CHEAT-SHEET — not shown in the app (no tab points here).
+     Copy-paste any block below into your pages. Everything uses css/site.css. -->
+<div class="page">
+
+  <h1>Copy-paste components</h1>
+
+  <!-- Hero card: photo with overlay text -->
+  <div class="hero-card">
+    <img src="img/worship-team.jpg" alt="">
+    <div class="overlay">
+      <div class="kicker">Small label</div>
+      <h2>Big headline</h2>
+      <p>Supporting line of text.</p>
+    </div>
+  </div>
+
+  <!-- Announcement banner -->
+  <div class="announce"><strong>Label:</strong><p>Announcement text here.</p></div>
+
+  <!-- Buttons: btn-primary (blue) btn-navy btn-green btn-outline; add btn-block for full width -->
+  <a class="btn btn-primary" href="https://example.com">Blue button</a>
+  <a class="btn btn-navy btn-block" href="https://example.com">Full-width navy button</a>
+  <!-- Special: opens turn-by-turn directions to the church -->
+  <a class="btn btn-green btn-block" data-action="directions" href="#">🧭 Get Directions</a>
+
+  <!-- Section label + heading -->
+  <div class="kicker">Section label</div>
+  <h2>Section heading</h2>
+  <p>Normal paragraph text.</p>
+
+  <!-- Cards: accent-blue / accent-green / accent-navy top border -->
+  <div class="card accent-blue"><h3>Card title</h3><p>Card text.</p></div>
+  <div class="card-navy"><h3>Dark card</h3><p>For emphasis.</p></div>
+
+  <!-- Schedule table -->
+  <table class="schedule">
+    <tr><th>Day</th><th>Service</th><th>Time</th></tr>
+    <tr><td>Sunday</td><td>Morning Worship</td><td>9:30 AM</td></tr>
+  </table>
+
+  <!-- Mission pillar rows (default navy, or add class blue / green) -->
+  <div class="pillar green"><div class="dot">★</div><div><h3>Title</h3><p>Subtitle</p></div></div>
+
+  <!-- Bible verse -->
+  <div class="verse">"Quoted verse text." <span class="ref">Book 1:1</span></div>
+
+  <!-- Contact row -->
+  <div class="c-row"><div class="ic">📞</div><div><h3>Phone</h3><a href="tel:+19318799137">(931) 879-9137</a></div></div>
+
+  <!-- Photo grid: first image with class "wide" spans full width -->
+  <div class="photo-grid">
+    <img class="wide" src="img/choir.jpg" alt="">
+    <img src="img/preaching.jpg" alt="">
+    <img src="img/pastor.jpg" alt="">
+  </div>
+
+  <!-- The app fills this with live distance to church: -->
+  <p>You are <span data-geo="distance">—</span> from FBT.</p>
+
+</div>

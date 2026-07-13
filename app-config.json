@@ -1,0 +1,23 @@
+{
+  "appName": "Faith Baptist Tabernacle",
+  "tabs": [
+    { "id": "home",       "label": "Home",       "icon": "⌂",  "page": "home.html" },
+    { "id": "today",      "label": "Today",      "icon": "◉",  "page": "at-church.html" },
+    { "id": "visit",      "label": "Visit",      "icon": "⌖",  "page": "geo" },
+    { "id": "ministries", "label": "Ministries", "icon": "♥",  "page": "ministries.html" },
+    { "id": "connect",    "label": "Connect",    "icon": "✉",  "page": "connect.html" }
+  ],
+  "geofence": {
+    "lat": 36.4157,
+    "lng": -84.9361,
+    "radiusMeters": 150,
+    "arrivalTabId": "today",
+    "atChurchPage": "at-church.html",
+    "awayPage": "away.html"
+  },
+  "links": {
+    "watchLive": "https://faithjamestown.org/media/watch-live",
+    "giving": "https://faithjamestown.org/giving",
+    "planVisit": "https://faithjamestown.org/connect/plan-a-visit"
+  }
+}

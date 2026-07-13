@@ -1,0 +1,92 @@
+/* ============================================================
+   Faith Baptist Tabernacle — App Page Styles
+   Edit freely. Every class here can be used in any page file.
+   Colors: navy #1c2c5e · blue #3d8fc9 · green #2f8f5b · cream #faf7f2
+   ============================================================ */
+:root{
+  --navy:#1c2c5e; --navy-dark:#141f44;
+  --blue:#3d8fc9; --blue-light:#6cb3e0;
+  --green:#2f8f5b;
+  --cream:#faf7f2; --ink:#2a2f3a; --ink-soft:#5a6272;
+  --shadow:0 8px 30px rgba(20,31,68,.10);
+  --radius:16px;
+}
+
+/* ---- Page basics ---- */
+.page{padding:20px 18px 30px;max-width:720px;margin:0 auto}
+.page h1,.page h2,.page h3{font-family:'Fraunces',Georgia,serif;color:var(--navy);line-height:1.2}
+.page h1{font-size:1.9rem;margin:16px 0 10px}
+.page h2{font-size:1.45rem;margin:28px 0 10px}
+.page h3{font-size:1.15rem;margin:18px 0 6px}
+.page p{color:var(--ink-soft);margin:10px 0;line-height:1.65}
+.page img{max-width:100%;border-radius:var(--radius);display:block}
+.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--green);margin-top:20px}
+
+/* ---- Hero banner (photo + overlay text) ---- */
+.hero-card{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px;color:#fff}
+.hero-card img{border-radius:0;width:100%;height:280px;object-fit:cover}
+.hero-card .overlay{position:absolute;inset:0;background:linear-gradient(rgba(20,31,68,.30),rgba(20,31,68,.82));display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.hero-card .overlay .kicker{color:var(--blue-light);margin:0 0 6px}
+.hero-card .overlay h1,.hero-card .overlay h2{color:#fff;margin:0 0 6px}
+.hero-card .overlay p{color:rgba(255,255,255,.88);margin:0}
+
+/* ---- Cards ---- */
+.card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin:14px 0}
+.card.accent-blue{border-top:4px solid var(--blue)}
+.card.accent-green{border-top:4px solid var(--green)}
+.card.accent-navy{border-top:4px solid var(--navy)}
+.card h3{margin-top:0}
+.card-navy{background:var(--navy);color:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin:14px 0}
+.card-navy h2,.card-navy h3{color:#fff;margin-top:0}
+.card-navy p{color:rgba(255,255,255,.85)}
+
+/* ---- Schedule table ---- */
+.schedule{width:100%;border-collapse:collapse;margin:10px 0}
+.schedule th{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);text-align:left;padding:8px 6px;border-bottom:2px solid var(--navy)}
+.schedule td{padding:11px 6px;border-bottom:1px dashed rgba(42,47,58,.18);font-size:15px;color:var(--ink)}
+.schedule td:last-child{font-weight:600;color:var(--navy);white-space:nowrap;text-align:right}
+
+/* ---- Buttons ---- */
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;text-align:center;margin:6px 6px 6px 0}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-outline{border:2px solid var(--navy);color:var(--navy)}
+.btn-block{display:block}
+
+/* ---- Mission pillars / icon rows ---- */
+.pillar{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:14px;padding:15px 16px;box-shadow:var(--shadow);margin:10px 0}
+.pillar .dot{flex:0 0 42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;background:var(--navy)}
+.pillar.blue .dot{background:var(--blue)}
+.pillar.green .dot{background:var(--green)}
+.pillar h3{margin:0 0 2px;font-size:1.02rem}
+.pillar p{margin:0;font-size:13.5px}
+
+/* ---- Announcement banner ---- */
+.announce{background:linear-gradient(120deg,var(--navy),#2a4080);color:#fff;border-radius:var(--radius);padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)}
+.announce strong{color:var(--blue-light)}
+.announce p{color:rgba(255,255,255,.9);margin:4px 0 0}
+
+/* ---- Quote / verse ---- */
+.verse{border-left:3px solid var(--green);padding:4px 0 4px 18px;margin:18px 0;font-family:'Fraunces',Georgia,serif;font-size:1.12rem;font-style:italic;color:var(--navy);line-height:1.5}
+.verse .ref{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+
+/* ---- Contact rows ---- */
+.c-row{display:flex;gap:14px;align-items:flex-start;margin:16px 0}
+.c-row .ic{flex:0 0 42px;height:42px;border-radius:11px;background:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font-size:18px}
+.c-row h3{margin:0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-family:'Inter',sans-serif}
+.c-row p,.c-row a{margin:2px 0 0;font-size:15.5px;color:var(--ink);font-weight:500;text-decoration:none}
+
+/* ---- Photo grid ---- */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.photo-grid img{aspect-ratio:1;object-fit:cover}
+.photo-grid .wide{grid-column:1/-1;aspect-ratio:16/9}
+
+/* ---- "You're here" content: hidden unless the shell marks #view.is-here ---- */
+[data-when="here"]{display:none}
+#view.is-here [data-when="here"]{display:block}
+
+/* ---- Utility ---- */
+.center{text-align:center}
+.muted{color:var(--ink-soft);font-size:13.5px}
+.spacer{height:16px}
