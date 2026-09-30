@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ACT Math Power Practice</title>
+<title>Kieran's ACT Math Power Practice</title>
 <meta name="description" content="Free ACT math practice: topic drills, timed tests, score estimate, and a formula cheat sheet.">
 <style>
 :root{--bg:#f4f6fb;--card:#fff;--ink:#1b2340;--mute:#5b6485;--line:#dfe4f1;--brand:#4f46e5;--brand2:#7c3aed;--good:#0f9d58;--goodbg:#e6f6ee;--bad:#d93025;--badbg:#fdeaea;--warn:#f59e0b}
@@ -46,6 +46,7 @@ table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--li
 .rv.ok{border-color:var(--good)}.rv.no{border-color:var(--bad)}
 ul{padding-left:20px;margin:6px 0}code{background:#eef0ff;padding:1px 6px;border-radius:5px}
 .dots{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0}.dots i{width:14px;height:14px;border-radius:4px;background:var(--line)}.dots i.a{background:var(--brand)}.dots i.c{background:var(--brand);opacity:.45}
+.dots i.f{background:var(--warn);opacity:1}.dots i.f.a{outline:2px solid var(--brand)}
 .pop{animation:pop .3s}@keyframes pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
 
 #cfab{position:fixed;right:16px;bottom:16px;width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:1.7rem;cursor:pointer;box-shadow:0 6px 18px rgba(79,70,229,.45);z-index:50}
@@ -62,7 +63,7 @@ ul{padding-left:20px;margin:6px 0}code{background:#eef0ff;padding:1px 6px;border
 </style>
 </head>
 <body>
-<header><div class="in"><h1 onclick="go('home')">📐 ACT Math Power Practice</h1>
+<header><div class="in"><h1 onclick="go('home')">📐 Kieran's ACT Math Prep</h1>
 <nav id="nav"></nav></div></header>
 <main id="app"></main>
 
@@ -151,6 +152,59 @@ H('Number & Quantity','What is 15% of 240?',['24','30','36','40','48'],2,'10% = 
 H('Number & Quantity','Which is the greatest?',['0.4','2/5','3/8','0.41','7/20'],3,'As decimals: 0.4, 0.4, 0.375, 0.41, 0.35. Greatest = 0.41.'),
 H('Number & Quantity','A home sells for $240,000. The listing agent gets 3% of the price. How much is that?',['$2,400','$4,800','$7,200','$12,000','$72,000'],2,'0.03 × 240,000 = $7,200.'),
 H('Number & Quantity','If 5 is added to twice a number, the result is 27. What is the number?',['8','9','11','13','16'],2,'2n + 5 = 27 → 2n = 22 → n = 11.')
+,
+H('Algebra','If 2^x = 8^(y − 1) and y = 4, what is x?',['6','8','9','12','16'],2,'8^(3) = (2³)³ = 2⁹, so x = 9. Rewrite both sides with the same base.'),
+H('Algebra','If 2x + 3y = 12 and 4x − y = 10, what is x + y?',['3','4','5','6','7'],2,'From the 2nd: y = 4x − 10. Substitute: 2x + 12x − 30 = 12 → x = 3, y = 2. x + y = 5.'),
+H('Algebra','The sum of three consecutive even integers is 78. What is the largest?',['24','26','28','30','32'],2,'Middle = 78 ÷ 3 = 26. The integers are 24, 26, 28. Largest = 28.'),
+H('Algebra','For x ≠ 3, which expression equals (x² − 9)/(x − 3)?',['x − 3','x + 3','x² − 3','x + 9','3'],1,'Factor: (x − 3)(x + 3)/(x − 3) = x + 3.'),
+H('Algebra','How many integers x satisfy −3 < 2x − 1 ≤ 7?',['4','5','6','7','8'],1,'Add 1: −2 < 2x ≤ 8. Divide by 2: −1 < x ≤ 4. Integers 0, 1, 2, 3, 4 → 5.'),
+H('Algebra','What is the product of the solutions of 2x² − 8x + 6 = 0?',['3','4','6','−3','−4'],0,'Product of roots = c/a = 6/2 = 3.'),
+H('Algebra','y varies directly with x. When x = 4, y = 12. What is y when x = 10?',['24','28','30','36','40'],2,'y = kx → k = 3. y = 3(10) = 30.'),
+H('Algebra','$2,000 earns 5% interest compounded annually. What is the balance after 2 years?',['$2,200.00','$2,205.00','$2,210.00','$2,250.00','$2,400.00'],1,'2000 × 1.05² = 2000 × 1.1025 = $2,205. Compound means multiply each year.'),
+H('Algebra','4 liters of a 10% salt solution are mixed with 6 liters of a 20% salt solution. What is the salt percentage of the mixture?',['14%','15%','16%','17%','18%'],2,'Salt: 0.4 + 1.2 = 1.6 L in 10 L total → 16%.'),
+H('Algebra','Which value of x satisfies |x − 2| < 3?',['−2','−1','5','6','3'],4,'−3 < x − 2 < 3 → −1 < x < 5. Only 3 is inside (endpoints excluded).'),
+H('Functions','What is the minimum value of f(x) = x² − 4x + 7?',['2','3','4','7','−3'],1,'Vertex at x = −b/2a = 2. f(2) = 4 − 8 + 7 = 3.'),
+H('Functions','If f(x) = 3x − 2, what is f⁻¹(10)?',['3','4','6','8','28'],1,'Solve 3x − 2 = 10 → x = 4. (Inverse asks: what input gives 10?)'),
+H('Functions','If g(x) = x² − 1 and g(a) = 15 with a > 0, what is a?',['2','3','4','√14','8'],2,'a² − 1 = 15 → a² = 16 → a = 4.'),
+H('Functions','How does the graph of y = f(x − 2) + 3 compare to y = f(x)?',['Left 2, up 3','Right 2, up 3','Right 2, down 3','Left 2, down 3','Right 3, up 2'],1,'x − 2 shifts RIGHT 2 (opposite of the sign). + 3 shifts UP 3.'),
+H('Functions','What is log₃ 81 − log₂ 8?',['0','1','2','3','5'],1,'log₃ 81 = 4 (3⁴). log₂ 8 = 3. 4 − 3 = 1.'),
+H('Functions','A machine worth $800 loses 25% of its value each year. What is it worth after 2 years?',['$400','$450','$500','$600','$650'],1,'800 × 0.75² = 800 × 0.5625 = $450.'),
+H('Functions','How many real zeros does f(x) = x³ − 4x have?',['1','2','3','4','0'],2,'x(x² − 4) = x(x − 2)(x + 2) → x = 0, 2, −2.'),
+H('Functions','What is the domain of f(x) = √(x − 5)?',['x > 5','x ≥ 5','x ≤ 5','x ≥ −5','All real numbers'],1,'Need x − 5 ≥ 0 → x ≥ 5.'),
+H('Functions','If f(x) = (2x + 1)/(x − 3), what is f(5)?',['2','11/2','6','11','−11/2'],1,'(2·5 + 1)/(5 − 3) = 11/2.'),
+H('Geometry','A square is inscribed in a circle of radius 5. What is the square\'s area?',['25','50','100','25√2','50√2'],1,'Diagonal = diameter = 10. Area = d²/2 = 50.'),
+H('Geometry','A triangle has sides 7, 24, and 25. What is its area?',['84','120','168','175','300'],0,'7-24-25 is a right triangle. Area = ½(7)(24) = 84.'),
+H('Geometry','A trapezoid has bases 6 and 10 and height 4. What is its area?',['24','32','40','64','80'],1,'½(6 + 10)(4) = 32.'),
+H('Geometry','What is the volume of a sphere with radius 3?',['12π','27π','36π','108π','324π'],2,'(4/3)π(27) = 36π.'),
+H('Geometry','A circle is inscribed in a square with side 10. What is the area inside the square but outside the circle?',['100 − 25π','100 − 10π','25π − 100','100 − 100π','50 − 25π'],0,'Circle radius = 5 → area 25π. Square = 100. Shaded = 100 − 25π.'),
+H('Geometry','Two sides of a triangle are 5 and 9. Which could be the third side?',['3','4','5','14','15'],2,'Third side must be between 9 − 5 = 4 and 9 + 5 = 14 (exclusive). Only 5 works.'),
+H('Geometry','Which line is perpendicular to y = 2x + 1 and passes through (4, 3)?',['y = 2x − 5','y = −2x + 11','y = −½x + 5','y = ½x + 1','y = −½x + 3'],2,'Perpendicular slope = −½. 3 = −½(4) + b → b = 5.'),
+H('Geometry','What is the area of a regular hexagon with side 4?',['16√3','24√3','48√3','96','64'],1,'Six equilateral triangles, each (√3/4)(16) = 4√3. Total 24√3.'),
+H('Geometry','A cube has surface area 150. What is its volume?',['25','75','125','150','216'],2,'6s² = 150 → s² = 25 → s = 5. Volume = 125.'),
+H('Geometry','An isosceles triangle has a vertex angle of 40°. What is each base angle?',['40°','50°','60°','70°','80°'],3,'(180 − 40)/2 = 70°.'),
+H('Geometry','A 6-ft person casts a 4-ft shadow. At the same time a tree casts a 30-ft shadow. How tall is the tree?',['40 ft','45 ft','50 ft','60 ft','75 ft'],1,'Similar triangles: 6/4 = h/30 → h = 45.'),
+H('Trigonometry','What is the maximum value of y = 3cos(4x) + 1?',['3','4','5','7','12'],1,'Amplitude 3, midline 1 → max = 1 + 3 = 4.'),
+H('Trigonometry','From 50 ft from a building\'s base, the angle of elevation to the top is 30°. About how tall is the building? (tan 30° ≈ 0.577)',['25.0 ft','28.9 ft','43.3 ft','50.0 ft','86.6 ft'],1,'tan 30° = h/50 → h = 50(0.577) ≈ 28.9 ft.'),
+H('Trigonometry','What is sin(π/6) + cos(π/3)?',['1/2','√3/2','1','√3','2'],2,'sin 30° = ½ and cos 60° = ½. Sum = 1.'),
+H('Trigonometry','A triangle has sides 5 and 8 with a 60° angle between them. How long is the third side?',['6','7','√89','9','13'],1,'c² = 25 + 64 − 2(5)(8)cos60° = 89 − 40 = 49 → c = 7.'),
+H('Trigonometry','For 0 ≤ x < 2π, what is the sum of the solutions to sin x = 1/2?',['π/2','π','3π/2','2π','5π/6'],1,'x = π/6 and 5π/6. Sum = 6π/6 = π.'),
+H('Trigonometry','If tan θ = 3/4 and θ is in Quadrant III, what is sin θ?',['3/5','−3/5','4/5','−4/5','−3/4'],1,'3-4-5 triangle: |sin| = 3/5. In Quadrant III sine is negative → −3/5.'),
+H('Stats & Probability','Which measure of center is LEAST affected by an extreme outlier?',['Mean','Median','Range','Standard deviation','Sum'],1,'The median only cares about the middle position, not how extreme the ends are.'),
+H('Stats & Probability','Class A has 20 students with a mean score of 80. Class B has 30 students with a mean of 90. What is the combined mean?',['84','85','86','87','88'],2,'(20·80 + 30·90)/50 = (1600 + 2700)/50 = 86. Weight by class size.'),
+H('Stats & Probability','Events A and B are independent, P(A) = 0.5 and P(B) = 0.4. What is P(A or B)?',['0.2','0.7','0.9','0.45','0.1'],1,'P(A and B) = 0.2. P(A or B) = 0.5 + 0.4 − 0.2 = 0.7.'),
+H('Stats & Probability','A bag has 3 red and 2 blue marbles. Two are drawn without replacement. What is the probability both are red?',['1/5','3/10','9/25','2/5','3/5'],1,'(3/5)(2/4) = 6/20 = 3/10.'),
+H('Stats & Probability','How many distinct arrangements are there of the letters in BOOK?',['6','8','12','16','24'],2,'4!/2! = 24/2 = 12 (divide by repeats).'),
+H('Stats & Probability','A data set has mean 50 and standard deviation 5. A score of 60 is how many standard deviations above the mean?',['1','1.5','2','2.5','10'],2,'(60 − 50)/5 = 2.'),
+H('Stats & Probability','A line of best fit is y = 2x + 5. What does it predict for x = 10?',['20','25','30','15','52'],1,'2(10) + 5 = 25.'),
+H('Stats & Probability','A game pays $10 with probability 0.2 and costs you $2 with probability 0.8. What is the expected value?',['−$0.40','$0.40','$2.00','$8.00','$10.00'],1,'0.2(10) + 0.8(−2) = 2 − 1.6 = $0.40.'),
+H('Number & Quantity','What is (3 + 2i)²? (i² = −1)',['13','5 + 12i','9 + 4i','5 + 6i','13 + 12i'],1,'9 + 12i + 4i² = 9 + 12i − 4 = 5 + 12i.'),
+H('Number & Quantity','What is i¹³? (i² = −1)',['1','i','−1','−i','13i'],1,'Powers of i repeat every 4: i¹³ = i¹² · i = 1 · i = i.'),
+H('Number & Quantity','What is (6 × 10⁸) ÷ (3 × 10⁵)?',['2 × 10³','2 × 10⁴','3 × 10³','2 × 10¹³','18 × 10⁵'],0,'6 ÷ 3 = 2. Subtract exponents: 8 − 5 = 3 → 2 × 10³.'),
+H('Number & Quantity','What is 6/√3 in simplest form?',['√3','2√3','3√2','6√3','2'],1,'Multiply top and bottom by √3: 6√3/3 = 2√3.'),
+H('Number & Quantity','What is the determinant of the matrix [[2, 3], [1, 4]]?',['5','8','11','−5','10'],0,'ad − bc = 2(4) − 3(1) = 5.'),
+H('Number & Quantity','A price rises from $80 to $100. What is the percent increase?',['20%','25%','30%','80%','125%'],1,'Change ÷ ORIGINAL = 20/80 = 25%.'),
+H('Number & Quantity','What is the greatest common factor of 48 and 72?',['6','12','24','36','144'],2,'48 = 2⁴·3, 72 = 2³·3². GCF = 2³·3 = 24.'),
+H('Number & Quantity','What is 1 + 2 + 3 + … + 50?',['1,250','1,275','1,300','2,550','1,225'],1,'n(n + 1)/2 = 50(51)/2 = 1,275.')
 ];
 
 /* ---------- endless generators ---------- */
@@ -174,6 +228,10 @@ const GEN=[
 ()=>{const r=R(3,9),b=R(2,8),g=R(2,8),c=pick(['red','blue','green']),n=({red:r,blue:b,green:g})[c],tot=r+b+g,gg=gcd(n,tot);const ans=`${n/gg}/${tot/gg}`;const w=[`${n}/${tot+1}`,`${tot-n}/${tot}`,`1/${tot}`,`${n}/${tot-n}`,`${(n/gg)+1}/${tot/gg}`].filter(x=>x!==ans);return mk('Stats & Probability',`A jar has ${r} red, ${b} blue, and ${g} green marbles. One is picked at random. What is the probability it is ${c}?`,ans,w,`${n} ${c} out of ${tot} total = ${n}/${tot}${gg>1?' = '+ans:''}.`)},
 ()=>{const n=R(5,10);return mk('Stats & Probability',`How many different 2-person teams can be chosen from ${n} people?`,n*(n-1)/2,[n*(n-1),n*n,n*2,n*(n-1)/2+n],`C(${n},2) = ${n}·${n-1}/2 = ${n*(n-1)/2}. Order doesn't matter, so divide by 2.`)},
 ()=>{const s=R(40,65),t=R(2,5),ans=s*t;return mk('Number & Quantity',`A car drives at ${s} mph for ${t} hours. How many miles does it travel?`,ans,[s+t,ans+s,ans-s,s*t*2],`Distance = rate × time = ${s} × ${t} = ${ans}.`)}
+,
+()=>{const x=R(3,15),y=R(1,x-1),sm=x+y,d=x-y;return mk('Algebra',`If x + y = ${sm} and x − y = ${d}, what is x · y?`,x*y,[sm,d,x,y,sm*d],`Add the equations: 2x = ${sm+d} → x = ${x}. Then y = ${sm} − ${x} = ${y}. xy = ${x*y}.`)},
+()=>{const old=R(1,10)*20,pc=pick([10,20,25,30,50]),up=Math.random()<.5,nw=old*(100+(up?pc:-pc))/100,dir=up?'increase':'decrease',opp=up?'decrease':'increase';return mk('Number & Quantity',`A price changes from $${old} to $${nw}. What is the percent change?`,`${pc}% ${dir}`,[`${pc}% ${opp}`,`${Math.round(Math.abs(nw-old)/nw*100)}% ${dir}`,`${pc+10}% ${dir}`,`${pc+5}% ${dir}`,`${Math.abs(nw-old)}% ${dir}`,`${pc+15}% ${dir}`,`${pc+20}% ${dir}`],`Percent change = change ÷ ORIGINAL = ${Math.abs(nw-old)}/${old} = ${pc}% ${dir}.`)},
+()=>{const a=[];while(a.length<5){const v=R(1,40);if(!a.includes(v))a.push(v)}const so=a.slice().sort((x,y)=>x-y),med=so[2],mean=Math.round(a.reduce((x,y)=>x+y)/5);return mk('Stats & Probability',`What is the median of ${a.join(', ')}?`,med,[a[2],mean,so[4],so[0],so[1],so[3]],`Sort first: ${so.join(', ')}. The middle value is ${med}.`)}
 ];
 function genQ(){const q=pick(GEN)();q.id='g'+Math.random();return q}
 
@@ -181,10 +239,11 @@ function genQ(){const q=pick(GEN)();q.id='g'+Math.random();return q}
 let S;
 const KEY='actmath.v1';
 function load(){try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
-  S=S||{};S.stats=S.stats||{};S.missed=S.missed||[];S.seen=S.seen||[];S.tests=S.tests||[];S.total=S.total||{r:0,n:0};
+  S=S||{};S.stats=S.stats||{};S.missed=S.missed||[];S.seen=S.seen||[];S.tests=S.tests||[];S.total=S.total||{r:0,n:0};S.daily=S.daily||{};S.done=S.done||{};S.exam=S.exam||'';
   TOPICS.forEach(t=>S.stats[t]=S.stats[t]||{r:0,n:0})}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function record(q,ok){const s=S.stats[q.t];s.n++;S.total.n++;if(ok){s.r++;S.total.r++}
+const today=()=>new Date().toLocaleDateString('en-CA');
+function record(q,ok){S.daily[today()]=(S.daily[today()]||0)+1;const s=S.stats[q.t];s.n++;S.total.n++;if(ok){s.r++;S.total.r++}
   S.missed=S.missed.filter(m=>m.q!==q.q);
   if(!ok)S.missed.push({t:q.t,q:q.q,c:q.c,a:q.a,e:q.e});
   if(S.missed.length>80)S.missed.shift();save()}
@@ -202,24 +261,39 @@ function getQs(n,topics){
   if(S.seen.length>BANK.length)S.seen=[];save();
   return shuffle(out).slice(0,n);
 }
+
+function daysLeft(){if(!S.exam)return null;return Math.round((new Date(S.exam+'T00:00')-new Date(today()+'T00:00'))/864e5)}
+function streak(){let n=0;const d=new Date();if(!(S.daily[today()]>=10))d.setDate(d.getDate()-1);for(;;){const k=d.toLocaleDateString('en-CA');if(S.daily[k]>=10){n++;d.setDate(d.getDate()-1)}else break}return n}
+function smartQs(n){
+  const w=TOPICS.map(t=>{const s=S.stats[t];return Math.max(.15,1.15-(s.n>=3?s.r/s.n:.5))}),tot=w.reduce((a,b)=>a+b);
+  const cnt=w.map(x=>Math.floor(n*x/tot));let rem=n-cnt.reduce((a,b)=>a+b);
+  const ord=w.map((_,i)=>i).sort((a,b)=>w[b]-w[a]);for(let i=0;rem>0;i++,rem--)cnt[ord[i%6]]++;
+  let qs=[];TOPICS.forEach((t,i)=>{if(cnt[i])qs=qs.concat(getQs(cnt[i],[t]))});return shuffle(qs);
+}
+function startSmart(n){startPractice([],n,smartQs(n));P.smart=true}
 const SCALE=[[0,1],[5,8],[10,12],[15,14],[20,16],[25,18],[30,20],[35,22],[40,24],[45,27],[50,30],[55,33],[58,35],[60,36]];
 function scaled(raw60){for(let i=1;i<SCALE.length;i++){const[a,x]=SCALE[i-1],[b,y]=SCALE[i];if(raw60<=b)return Math.round(x+(y-x)*(raw60-a)/(b-a))}return 36}
 
 /* ---------- views ---------- */
 const app=document.getElementById('app');let view='home',timer=null;
-const NAV=[['home','Home'],['practice','Practice'],['test','Timed Test'],['missed','Missed'],['sheet','Cheat Sheet']];
+const NAV=[['home','Home'],['plan','Plan'],['practice','Practice'],['test','Timed Test'],['missed','Missed'],['learn','Learn'],['sheet','Cheat Sheet']];
 function go(v){clearInterval(timer);view=v;window.scrollTo(0,0);draw()}
 function draw(){
   document.getElementById('nav').innerHTML=NAV.map(([k,l])=>`<button class="${view===k?'on':''}" onclick="go('${k}')">${l}${k==='missed'&&S.missed.length?' ('+S.missed.length+')':''}</button>`).join('');
-  ({home,practice,test,missed,sheet})[view]();
+  ({home,plan,practice,test,missed,learn,sheet})[view]();
 }
 const pct=s=>s.n?Math.round(100*s.r/s.n):0;
 
 function home(){
   const last=S.tests.slice(-1)[0],best=S.tests.reduce((m,t)=>Math.max(m,t.scaled),0);
   const est=S.total.n>=10?scaled(Math.round(60*S.total.r/S.total.n)):null;
+  const dl=daysLeft(),td=S.daily[today()]||0,st=streak();
   app.innerHTML=`
-  <div class="card"><h2>Let's get that score up! 💪</h2>
+  <div class="card" style="background:linear-gradient(135deg,#eef0ff,#f6efff)"><div class="top"><div><b>${dl==null?'📅 Set your test date':dl>0?'⏳ '+dl+' day'+(dl>1?'s':'')+' until test day':dl===0?'🎯 TEST DAY — you\'ve got this, Kieran!':'📅 Set your next test date'}</b>
+  <div class="mute">Today: ${td}/20 questions${td>=20?' ✅ goal hit!':''} · 🔥 ${st}-day streak (10+ a day)</div></div><button class="btn sm" onclick="go('plan')">${dl!=null&&dl>=0?'Open my plan':'Make my plan'}</button></div>
+  <div class="bar"><i style="width:${Math.min(100,td*5)}%"></i></div></div>
+  
+  <div class="card"><h2>Let's do this, Kieran! 💪</h2>
   <p class="mute">Practice by topic, take timed tests, and review every miss. Small wins add up — aim for 20 questions a day.</p>
   <div class="grid" style="margin-top:12px">
     <div><div class="big">${est??'–'}</div><div class="mute">Estimated ACT Math score${est?'':' (answer 10+ questions)'}</div></div>
@@ -227,10 +301,12 @@ function home(){
     <div><div class="big">${best||'–'}</div><div class="mute">Best timed-test estimate${last?' · last '+last.scaled:''}</div></div>
   </div></div>
   <div class="card"><h3>Start here</h3><div class="grid">
+    <button class="tile" onclick="startSmart(20)"><b>🧠 Smart 20</b><span class="mute">Focuses on your weakest topics</span></button>
     <button class="tile" onclick="startPractice(TOPICS,10)"><b>⚡ Quick 10</b><span class="mute">Mixed questions, instant feedback</span></button>
     <button class="tile" onclick="go('practice')"><b>🎯 Topic drill</b><span class="mute">Pick your weak spots</span></button>
     <button class="tile" onclick="go('test')"><b>⏱️ Timed test</b><span class="mute">Real ACT pacing: 1 min/question</span></button>
     <button class="tile" onclick="go('missed')"><b>🔁 Review missed</b><span class="mute">${S.missed.length} waiting</span></button>
+    <button class="tile" onclick="go('learn')"><b>📖 Learn</b><span class="mute">Short lessons + worked examples</span></button>
   </div></div>
   <div class="card"><h3>Your topics</h3>
   ${TOPICS.map(t=>{const s=S.stats[t];return`<div><b>${t}</b> <span class="mute">${s.n?pct(s)+'% ('+s.r+'/'+s.n+')':'not started'}</span><div class="bar"><i style="width:${pct(s)}%"></i></div></div>`}).join('')}
@@ -254,7 +330,7 @@ function practice(){
 function tog(t){P.sel=P.sel||[];const i=P.sel.indexOf(t);i<0?P.sel.push(t):P.sel.splice(i,1);practice()}
 function startPractice(topics,n,qs){view='run';P={sel:topics===TOPICS?[]:topics,mode:'practice',qs:qs||getQs(n,topics),i:0,right:0,ans:null,res:[]};runQ()}
 function runQ(){
-  const q=P.qs[P.i];
+  const q=P.qs[P.i];P.t0=Date.now();
   app.innerHTML=`<div class="card pop"><div class="top"><span class="tag">${q.t}</span><span class="mute">Question ${P.i+1} of ${P.qs.length} · ✅ ${P.right}</span></div>
   <div class="dots">${P.qs.map((_,i)=>`<i class="${i<P.i?'c':i===P.i?'a':''}"></i>`).join('')}</div>
   <div class="q">${q.q}</div>
@@ -263,7 +339,7 @@ function runQ(){
 }
 function answer(i){
   if(P.ans!==null)return;P.ans=i;const q=P.qs[P.i],ok=i===q.a;
-  if(ok)P.right++;record(q,ok);P.res.push({q,pick:i,ok});
+  if(ok)P.right++;record(q,ok);P.res.push({q,pick:i,ok,sec:Math.round((Date.now()-P.t0)/1000)});
   document.querySelectorAll('.opt').forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});
   const last=P.i===P.qs.length-1;
   document.getElementById('fb').innerHTML=`<div class="exp"><b>${ok?'✅ Correct!':'❌ Not quite — answer is '+LET[q.a]+'.'}</b>\n${q.e}</div><button class="btn" onclick="nextQ()">${last?'See results':'Next →'}</button>`;
@@ -272,29 +348,31 @@ function nextQ(){P.ans=null;P.i++;P.i>=P.qs.length?practiceDone():runQ()}
 function practiceDone(){
   const n=P.qs.length;
   app.innerHTML=`<div class="card"><h2>Done! ${P.right}/${n} (${Math.round(100*P.right/n)}%)</h2>
-  <p>${P.right/n>=.8?'🔥 Excellent work!':P.right/n>=.6?'👍 Solid — review the misses below.':'💡 Every miss is a chance to learn. Read the explanations!'}</p>
-  <button class="btn" onclick="startPractice(P.sel,${n})">Go again</button> <button class="btn alt" onclick="go('home')">Home</button></div>
+  <p>${P.right/n>=.8?'🔥 Excellent work, Kieran!':P.right/n>=.6?'👍 Solid — review the misses below.':'💡 Every miss is a chance to learn. Read the explanations!'}</p>
+  <p class="mute">⏱️ Average ${Math.round(P.res.reduce((a,r)=>a+r.sec,0)/n)} sec per question — ACT pace is about 60. ${P.res.filter(r=>r.sec>90).length?'Slowest: '+P.res.filter(r=>r.sec>90).length+' question(s) over 90 sec — practice skipping and coming back.':''}</p>
+  <button class="btn" onclick="${'${P.smart?`startSmart(${n})`:`startPractice(P.sel,${n})`}'}">Go again</button> <button class="btn alt" onclick="go('home')">Home</button></div>
   <div class="card"><h3>Review</h3>${review(P.res)}</div>`;
 }
-function review(res){return res.map((r,k)=>`<div class="rv ${r.ok?'ok':'no'}"><b>${k+1}. ${r.q.q}</b><br>Your answer: ${r.pick==null?'<i>blank</i>':LET[r.pick]+') '+r.q.c[r.pick]} ${r.ok?'✅':'❌'} · Correct: ${LET[r.q.a]}) ${r.q.c[r.q.a]}<div class="mute" style="white-space:pre-line">${r.q.e}</div></div>`).join('')}
+function review(res){return res.map((r,k)=>`<div class="rv ${r.ok?'ok':'no'}"><b>${k+1}. ${r.q.q}</b><br>Your answer: ${r.pick==null?'<i>blank</i>':LET[r.pick]+') '+r.q.c[r.pick]} ${r.ok?'✅':'❌'}${r.sec!=null?' · '+r.sec+'s':''} · Correct: ${LET[r.q.a]}) ${r.q.c[r.q.a]}<div class="mute" style="white-space:pre-line">${r.q.e}</div></div>`).join('')}
 
 /* ---- timed test ---- */
 function test(){
   app.innerHTML=`<div class="card"><h2>Timed Test</h2><p class="mute">Real ACT pacing: <b>1 minute per question</b>. Mixed topics. You can skip and come back. Missed questions go to your review list.</p>
   <div class="grid">${[[15,'Mini','15 min'],[30,'Half','30 min'],[60,'Full ACT Math','60 min']].map(([n,l,m])=>`<button class="tile" onclick="startTest(${n})"><b>${l}</b><span class="mute">${n} questions · ${m}</span></button>`).join('')}</div></div>`;
 }
-function startTest(n){view='run';P={mode:'test',qs:getQs(n),i:0,picks:new Array(n).fill(null),left:n*60};
+function startTest(n){view='run';P={mode:'test',qs:getQs(n),i:0,picks:new Array(n).fill(null),flags:new Array(n).fill(false),left:n*60};
   clearInterval(timer);timer=setInterval(()=>{P.left--;const el=document.getElementById('tm');if(el){el.textContent=mmss(P.left);el.classList.toggle('low',P.left<=60)}if(P.left<=0)finishTest()},1000);tq()}
 const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
 function tq(){
   const q=P.qs[P.i],n=P.qs.length;
   app.innerHTML=`<div class="card pop"><div class="top"><span class="tag">Question ${P.i+1} of ${n}</span><span class="timer ${P.left<=60?'low':''}" id="tm">${mmss(P.left)}</span></div>
-  <div class="dots">${P.qs.map((_,i)=>`<i class="${P.picks[i]!==null?'c':''} ${i===P.i?'a':''}" style="cursor:pointer" onclick="P.i=${i};tq()"></i>`).join('')}</div>
+  <div class="dots">${P.qs.map((_,i)=>`<i class="${P.picks[i]!==null?'c':''} ${i===P.i?'a':''} ${P.flags[i]?'f':''}" style="cursor:pointer" onclick="P.i=${i};tq()"></i>`).join('')}</div>
   <div class="q">${q.q}</div>
   ${q.c.map((c,i)=>`<button class="opt ${P.picks[P.i]===i?'sel':''}" onclick="P.picks[P.i]=${i};tq()"><span class="L">${LET[i]}</span><span>${c}</span></button>`).join('')}
   <div class="chips"><button class="btn sm alt" ${P.i?'':'disabled'} onclick="P.i--;tq()">← Back</button>
   <button class="btn sm" ${P.i<n-1?'':'disabled'} onclick="P.i++;tq()">Next →</button>
-  <button class="btn sm alt" onclick="if(confirm('Submit test? ${P.picks.filter(x=>x===null).length} unanswered.'))finishTest()">Submit test</button></div></div>`;
+  <button class="btn sm alt" onclick="P.flags[P.i]=!P.flags[P.i];tq()">${P.flags[P.i]?'🚩 Flagged':'⚑ Flag to revisit'}</button>
+  <button class="btn sm alt" onclick="if(confirm('Submit test? ${P.picks.filter(x=>x===null).length} unanswered (blanks count wrong — guess!).'))finishTest()">Submit test</button></div></div>`;
 }
 function finishTest(){
   clearInterval(timer);const n=P.qs.length;let right=0;const res=[];
@@ -315,6 +393,70 @@ function missed(){
   if(!S.missed.length){app.innerHTML=`<div class="card"><h2>Nothing missed 🎉</h2><p class="mute">Miss a question and it lands here so you can beat it next time.</p></div>`;return}
   app.innerHTML=`<div class="card"><h2>Missed questions (${S.missed.length})</h2><p class="mute">Get one right and it leaves the list.</p>
   <button class="btn" onclick="startPractice([],0,shuffle(S.missed).slice(0,15).map(m=>({...m,id:'m'})))">Drill up to 15</button></div>`;
+}
+
+
+/* ---- plan ---- */
+const PLAN=[
+ ['Baseline day',[['Take a 60-question timed test (real pacing)','startTest(60)'],['Review every miss and read the explanations',"go('missed')"]]],
+ ['Algebra + Functions',[['Read the Algebra and Functions lessons',"go('learn')"],['Drill 30 questions','startPractice([\'Algebra\',\'Functions\'],30)']]],
+ ['Geometry + Trig',[['Read the Geometry and Trig lessons',"go('learn')"],['Drill 30 questions','startPractice([\'Geometry\',\'Trigonometry\'],30)']]],
+ ['Stats + Number',[['Read the Stats and Number lessons',"go('learn')"],['Drill 30 questions','startPractice([\'Stats & Probability\',\'Number & Quantity\'],30)']]],
+ ['Second full test',[['Take another 60-question timed test','startTest(60)'],['Compare to your baseline — then fix the misses',"go('missed')"]]],
+ ['Weak-spot day',[['Smart 30 (targets your weakest topics)','startSmart(30)'],['Redo your Missed list',"go('missed')"],['Skim the Cheat Sheet',"go('sheet')"]]],
+ ['Warm-up day (light!)',[['Take a 15-question mini test','startTest(15)'],['Skim the Cheat Sheet',"go('sheet')"],['Pack your bag, charge/replace calculator batteries, sleep early 😴','']]]
+];
+const TESTDAY=['Photo ID + admission ticket','Approved calculator with fresh batteries (check DEG mode!)','Several sharpened #2 pencils','Breakfast + water + snack','Arrive early, take deep breaths','Easy ones first, never leave a blank']
+function setExam(v){S.exam=v;save();plan()}
+function tick(k){S.done[k]=!S.done[k];save();plan()}
+function plan(){
+  const dl=daysLeft(),d=S.exam;
+  let h=`<div class="card"><h2>Your Test-Week Plan</h2><p class="mute">Set your test date and get a day-by-day plan. Do one day at a time — consistency beats cramming.</p>
+  <label><b>Test date:</b> <input type="date" value="${d}" onchange="setExam(this.value)" style="font:inherit;padding:6px;border:2px solid var(--line);border-radius:8px"></label>`;
+  if(dl==null)h+=`<p class="mute">Pick your date above to build the plan.</p></div>`;
+  else if(dl<0)h+=`<p class="mute">That date has passed — pick your next test date above.</p></div>`;
+  else{
+    h+=`<p><b>${dl===0?'🎯 It\'s test day!':dl+' day'+(dl>1?'s':'')+' to go'}</b></p></div>`;
+    if(dl===0)h+=`<div class="card"><h3>Test-day checklist</h3>${TESTDAY.map((t,i)=>`<label style="display:block;margin:6px 0"><input type="checkbox" ${S.done[d+'|t'+i]?'checked':''} onchange="tick('${d}|t${i}')"> ${t}</label>`).join('')}<p>Kieran, you have prepared. Trust it. 💜</p></div>`;
+    else{
+      if(dl>7)h+=`<div class="card"><h3>Warm-up phase (${dl-7} more day${dl-7>1?'s':''} before the 7-day plan)</h3><p class="mute">Each day: one Smart 20 + read one lesson. Build the habit and the streak.</p><button class="btn sm" onclick="startSmart(20)">Start Smart 20</button></div>`;
+      const cur=dl>7?-1:7-dl;
+      PLAN.forEach(([name,tasks],i)=>{const on=i===cur;
+        h+=`<div class="card" style="${on?'border:2px solid var(--brand);background:#f7f7ff':''}"><h3>Day ${i+1}: ${name}${on?' <span class="tag">TODAY</span>':i<cur?' <span class="tag" style="background:#e6f6ee;color:var(--good)">catch up if time</span>':''}</h3>
+        ${tasks.map(([t,a],j)=>{const k=d+'|'+i+'.'+j;return`<div style="display:flex;gap:8px;align-items:center;margin:8px 0;flex-wrap:wrap"><input type="checkbox" ${S.done[k]?'checked':''} onchange="tick('${k}')"><span style="flex:1;min-width:180px;${S.done[k]?'text-decoration:line-through;opacity:.6':''}">${t}</span>${a?`<button class="btn sm ${on?'':'alt'}" onclick="${a.replace(/"/g,'&quot;')}">Go</button>`:''}</div>`}).join('')}</div>`});
+      h+=`<div class="card"><h3>Test day</h3><ul>${TESTDAY.map(t=>`<li>${t}</li>`).join('')}</ul></div>`;
+    }
+  }
+  app.innerHTML=h;
+}
+
+/* ---- learn ---- */
+const LESSONS={
+'Algebra':[
+ ['Equations, inequalities & systems',['Do the same thing to both sides. Distribute negatives carefully: −(x − 3) = −x + 3.','Inequalities: flip the sign ONLY when multiplying/dividing by a negative.','Systems: add or subtract the equations to cancel a variable (elimination), or substitute.'],'x + y = 10 and x − y = 4 → add: 2x = 14 → x = 7, y = 3.','Answer the question asked — x? y? x + y? xy?'],
+ ['Quadratics, percents, rates & ratios',['Factor, or use x = (−b ± √(b²−4ac))/2a. Sum of roots = −b/a, product = c/a.','Discriminant b² − 4ac: positive = 2 real, zero = 1, negative = none.','Successive percents multiply: 20% off then 10% off = × 0.8 × 0.9.','Distance = rate × time. Work rates add: 1/a + 1/b = 1/t. Ratios: add the parts, find one part.'],'Ratio 3:5, total 40 → 8 parts, 5 each → the 5-part group is 25.','Percent change = change ÷ ORIGINAL. Discounts don\'t add.']],
+'Functions':[
+ ['Function notation, domain & graphs',['f(3): plug 3 in for every x. f(g(2)): do g(2) first, then feed the result to f.','Domain: no zero denominators, no negatives under a square root.','y = a(x − h)² + k has vertex (h, k). f(x − h) + k moves the graph RIGHT h, UP k.'],'f(x) = x + 4, g(x) = 3x → f(g(2)) = f(6) = 10.','Horizontal shifts go the OPPOSITE way from the sign.'],
+ ['Exponents, logs, sequences & growth',['x^a·x^b = x^(a+b); (x^a)^b = x^(ab); x^(−a) = 1/x^a; x^(a/b) = b-th root of x^a.','log_b(x) = y means b^y = x.','Arithmetic: aₙ = a₁ + (n−1)d. Geometric: aₙ = a₁·r^(n−1).','Growth/decay: start × (factor)^(periods). 25% loss per year → factor 0.75.'],'(2x³)² = 4x⁶ — square the 2 too!','Compound = multiply, not add.']],
+'Geometry':[
+ ['Triangles, polygons & similarity',['Triangle angles sum to 180°. Polygon: (n − 2)·180°.','Right triangles: a² + b² = c². Know 3-4-5, 5-12-13, 8-15-17, 7-24-25 and their multiples.','45-45-90: x, x, x√2. 30-60-90: x, x√3, 2x.','Similar shapes: sides scale by k, perimeter by k, AREA by k², volume by k³.'],'Legs 9 and 12 → it\'s 3-4-5 × 3 → hypotenuse 15.','Triangle inequality: third side is between the difference and the sum of the other two.'],
+ ['Circles, coordinates & solids',['Circle: A = πr², C = 2πr, arc = (θ/360)·2πr.','Equation: (x − h)² + (y − k)² = r². Complete the square to find the center and radius.','Distance = √[(Δx)² + (Δy)²]. Midpoint = average of the coordinates.','Cylinder πr²h · sphere (4/3)πr³ · cone/pyramid ⅓·base·h.'],'Circumference 10π → r = 5 → area 25π.','Radius vs. diameter is the #1 slip. Underline what\'s given.']],
+'Trigonometry':[
+ ['SOH-CAH-TOA & special angles',['sin = opp/hyp, cos = adj/hyp, tan = opp/adj.','sin²θ + cos²θ = 1 and tan θ = sin θ / cos θ.','30°: sin ½, cos √3/2. 45°: √2/2 both. 60°: sin √3/2, cos ½.','Law of cosines: c² = a² + b² − 2ab·cos C.'],'sin θ = 3/5 → adjacent = 4 (3-4-5) → cos θ = 4/5.','Check the calculator is in DEGREE mode (or RADIAN if the problem uses π).'],
+ ['Radians & trig graphs',['180° = π. Degrees → radians: multiply by π/180.','y = a·sin(b(x − h)) + k: amplitude |a|, period 2π/b, midline y = k.','Quadrants: All, Sine, Tangent, Cosine are positive in Q1–Q4 ("ASTC").'],'y = 3cos(4x) + 1 → max is 1 + 3 = 4, period = 2π/4 = π/2.','Reference angle first, then decide the sign by the quadrant.']],
+'Stats & Probability':[
+ ['Averages, spread & data',['Mean = sum ÷ count, so sum = mean × count. Median = middle of the SORTED list.','Combined mean: weight by group size — (n₁m₁ + n₂m₂)/(n₁ + n₂).','Outliers pull the mean, not the median. Standard deviation measures spread.','Line of best fit: plug the x-value into y = mx + b.'],'Mean of 5 numbers is 12, add 18 → (60 + 18)/6 = 13.','Sort before finding the median!'],
+ ['Probability & counting',['P = favorable ÷ total. "And" (independent) → multiply. "Or" → add, then subtract the overlap.','Without replacement: the total shrinks after each draw.','Counting principle: multiply the choices. Arrangements: n! (divide by repeats). Choose r of n: nCr.','Expected value = Σ (value × probability).'],'Committee of 2 from 6: C(6,2) = 15 (order doesn\'t matter).','Order matters → permutation. Order doesn\'t → combination.']],
+'Number & Quantity':[
+ ['Radicals, exponents & complex numbers',['√72 = √36·√2 = 6√2. Rationalize: 6/√3 = 2√3.','Scientific notation: multiply numbers, ADD exponents (divide → subtract).','i² = −1. Powers of i cycle every 4: i, −1, −i, 1. (a + bi)(a − bi) = a² + b².'],'i¹³ → 13 ÷ 4 leaves remainder 1 → i.','FOIL complex numbers, then replace i² with −1.'],
+ ['Percents, ratios & number sense',['Percent change = change ÷ original. "Percent of" means multiply.','GCF = shared prime factors (lowest powers); LCM = all prime factors (highest powers).','Sum 1 + 2 + … + n = n(n + 1)/2.','Proportions: cross-multiply. Unit rates make word problems easy.'],'$80 → $100 is 20/80 = 25% increase.','When numbers are ugly, plug in the answer choices.']]
+};
+function learn(){
+  let h=`<div class="card"><h2>Quick Lessons</h2><p class="mute">Short and practical: key ideas, one worked example, and the trap to avoid. Tap a card to open it.</p></div>`;
+  TOPICS.forEach(t=>{h+=`<div class="card"><div class="top"><h3 style="margin:0">${t} <span class="mute">· ${pct(S.stats[t])}% so far</span></h3><button class="btn sm" onclick="startPractice(['${t.replace(/'/g,"\\'")}'],10)">Practice 10</button></div>`+
+    LESSONS[t].map(([n,pts,ex,trap])=>`<details style="margin:8px 0"><summary style="cursor:pointer;font-weight:700">${n}</summary><ul>${pts.map(p=>`<li>${p}</li>`).join('')}</ul><div class="exp"><b>Example:</b> ${ex}</div><div class="mute">⚠️ <b>Trap:</b> ${trap}</div></details>`).join('')+`</div>`});
+  h+=`<div class="card"><h3>🧮 Calculator tricks</h3><ul><li>Use the parentheses key around a whole numerator or denominator: (3+4)÷(2+5).</li><li>Wrong answer choices can be tested quickly by plugging them in.</li><li>Trig questions: check DEG vs RAD first — it's the most common calculator mistake.</li><li>Use ANS to chain steps instead of retyping long decimals.</li><li>Don't use it for easy arithmetic — it's slower than your head. Save it for messy numbers.</li></ul></div>`;
+  app.innerHTML=h;
 }
 
 /* ---- cheat sheet ---- */
@@ -366,7 +508,7 @@ function sheet(){
   <li>Skip anything over 90 seconds, mark it, come back.</li>
   <li>With 2 minutes left, <b>bubble a guess</b> for every blank.</li>
   <li>Use your calculator for arithmetic, not for thinking. Check that it's in the right mode (degrees vs radians!).</li>
-  <li>Sleep, eat breakfast, arrive early. You've got this. 💜</li></ul></div>`;
+  <li>Sleep, eat breakfast, arrive early. You've got this, Kieran. 💜</li></ul></div>`;
 }
 
 /* ---------- floating calculator ---------- */
