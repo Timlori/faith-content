@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACT Math Power Practice</title>
+<meta name="description" content="Free ACT math practice: topic drills, timed tests, score estimate, and a formula cheat sheet.">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#1b2340;--mute:#5b6485;--line:#dfe4f1;--brand:#4f46e5;--brand2:#7c3aed;--good:#0f9d58;--goodbg:#e6f6ee;--bad:#d93025;--badbg:#fdeaea;--warn:#f59e0b}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5}
+header .in{max-width:860px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+header h1{font-size:1.15rem;margin:0;cursor:pointer}
+nav{display:flex;gap:6px;flex-wrap:wrap}
+nav button{background:rgba(255,255,255,.18);color:#fff;border:0;padding:7px 12px;border-radius:999px;font-weight:600;cursor:pointer;font-size:.85rem}
+nav button.on,nav button:hover{background:#fff;color:var(--brand)}
+main{max-width:860px;margin:18px auto;padding:0 16px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,30,80,.05)}
+h2{margin:0 0 8px;font-size:1.3rem}h3{margin:0 0 8px;font-size:1.05rem}
+.mute{color:var(--mute);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.btn{background:var(--brand);color:#fff;border:0;padding:12px 18px;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}.btn.alt{background:#fff;color:var(--brand);border:2px solid var(--brand)}
+.btn.sm{padding:8px 12px;font-size:.85rem}.btn:disabled{opacity:.4;cursor:not-allowed}
+.tile{border:2px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;background:#fff;text-align:left;font:inherit;color:inherit}
+.tile:hover{border-color:var(--brand)}.tile b{display:block;font-size:1rem}
+.big{font-size:2.6rem;font-weight:800;color:var(--brand);line-height:1}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:4px 0 10px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:6px 13px;font-weight:600;cursor:pointer;font-size:.88rem}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.q{font-size:1.15rem;font-weight:600;margin:6px 0 14px;white-space:pre-line}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:12px 14px;margin:8px 0;border:2px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-size:1.05rem;cursor:pointer;color:inherit}
+.opt:hover:not(:disabled){border-color:var(--brand)}
+.opt .L{flex:none;width:30px;height:30px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.opt.sel{border-color:var(--brand);background:#eef0ff}
+.opt.ok{border-color:var(--good);background:var(--goodbg)}.opt.no{border-color:var(--bad);background:var(--badbg)}
+.exp{background:#fffbea;border-left:4px solid var(--warn);padding:10px 14px;border-radius:8px;margin:12px 0;white-space:pre-line}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:1.2rem;color:var(--brand)}.timer.low{color:var(--bad)}
+.tag{display:inline-block;background:#eef0ff;color:var(--brand);border-radius:6px;padding:2px 9px;font-size:.78rem;font-weight:700}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;font-size:.95rem;vertical-align:top}
+.rv{border-left:5px solid var(--line);padding:8px 12px;margin:10px 0;background:#fafbff;border-radius:6px}
+.rv.ok{border-color:var(--good)}.rv.no{border-color:var(--bad)}
+ul{padding-left:20px;margin:6px 0}code{background:#eef0ff;padding:1px 6px;border-radius:5px}
+.dots{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0}.dots i{width:14px;height:14px;border-radius:4px;background:var(--line)}.dots i.a{background:var(--brand)}.dots i.c{background:var(--brand);opacity:.45}
+.pop{animation:pop .3s}@keyframes pop{0%{transform:scale(.96)}60%{transform:scale(1.03)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<header><div class="in"><h1 onclick="go('home')">📐 ACT Math Power Practice</h1>
+<nav id="nav"></nav></div></header>
+<main id="app"></main>
+
+<script>
+/* ---------- helpers ---------- */
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[R(0,a.length-1)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=R(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+const fmt=n=>Number(n).toLocaleString('en-US');
+const NUM=/^-?\d+(\.\d+)?$/;
+const TOPICS=['Algebra','Functions','Geometry','Trigonometry','Stats & Probability','Number & Quantity'];
+const LET=['A','B','C','D','E'];
+
+function mk(t,q,ans,dis,e){
+  ans=String(ans);const set=[ans];
+  for(const d of dis){const s=String(d);if(!set.includes(s))set.push(s);if(set.length===5)break}
+  if(NUM.test(ans)){for(let k=1;set.length<5&&k<60;k++){const s=String(+ans+(k%2?1:-1)*Math.ceil(k/2));if(!set.includes(s))set.push(s)}}
+  const c=set.every(s=>NUM.test(s))?set.slice().sort((x,y)=>x-y):shuffle(set);
+  return{t,q,c,a:c.indexOf(ans),e};
+}
+const H=(t,q,c,a,e)=>({t,q,c,a,e,id:q});
+
+/* ---------- hand-written bank ---------- */
+const BANK=[
+H('Algebra','If 3x − 7 = 20, what is x?',['6','7','9','11','27'],2,'Add 7: 3x = 27. Divide by 3: x = 9.'),
+H('Algebra','Solve for x: 2(x + 3) = 5x − 9',['3','5','7','9','15'],1,'2x + 6 = 5x − 9 → 15 = 3x → x = 5.'),
+H('Algebra','What is the slope of the line through (2, 5) and (6, 13)?',['1/2','1','2','4','8'],2,'Slope = rise/run = (13−5)/(6−2) = 8/4 = 2.'),
+H('Algebra','What is the sum of the solutions of x² − 5x + 6 = 0?',['1','5','6','−5','−6'],1,'Factor: (x−2)(x−3)=0 → x = 2, 3. Sum = 5. Shortcut: sum of roots = −b/a = 5.'),
+H('Algebra','If x + y = 10 and x − y = 4, what is xy?',['12','21','24','30','40'],1,'Add equations: 2x = 14 → x = 7, y = 3. xy = 21.'),
+H('Algebra','Which is the solution to 3x − 4 > 11?',['x > 3','x > 5','x > 7','x < 5','x < −5'],1,'3x > 15 → x > 5. (Only flip the sign when dividing by a negative.)'),
+H('Algebra','Which line is parallel to y = −2x + 3 and passes through (1, 4)?',['y = −2x + 3','y = −2x + 6','y = 2x + 2','y = ½x + 3.5','y = −2x + 2'],1,'Parallel = same slope (−2). Plug in (1,4): 4 = −2(1) + b → b = 6.'),
+H('Algebra','If a = 3 and b = −2, what is a² − 2ab + b²?',['1','13','25','35','49'],2,'It equals (a − b)² = (3 − (−2))² = 5² = 25. Or: 9 + 12 + 4 = 25.'),
+H('Algebra','What is the sum of all solutions to |2x − 3| = 7?',['2','3','5','7','10'],1,'2x − 3 = 7 → x = 5;  2x − 3 = −7 → x = −2. Sum = 3.'),
+H('Algebra','A jacket costs $80. It is discounted 20%, then that price is discounted another 10%. What is the final price?',['$56.00','$57.60','$58.00','$60.00','$62.40'],1,'80 × 0.80 = 64. Then 64 × 0.90 = $57.60. Discounts multiply, they don\'t add.'),
+H('Algebra','A train travels 240 miles in 4 hours. At the same rate, how many miles in 9 hours?',['480','510','540','560','600'],2,'Rate = 240/4 = 60 mph. 60 × 9 = 540.'),
+H('Algebra','The ratio of boys to girls in a class is 3:5. If there are 40 students, how many are girls?',['15','20','24','25','30'],3,'3 + 5 = 8 parts. 40/8 = 5 per part. Girls = 5 × 5 = 25.'),
+H('Algebra','If x² + 4x + k = 0 has exactly one real solution, what is k?',['1','2','4','8','16'],2,'One solution → discriminant = 0: b² − 4ac = 16 − 4k = 0 → k = 4.'),
+H('Algebra','Lori can mow a lawn in 3 hours. Tim can mow it in 6 hours. Working together, how many hours?',['1.5','2','3','4.5','9'],1,'Rates add: 1/3 + 1/6 = 1/2 lawn per hour → 2 hours.'),
+H('Functions','If f(x) = 2x² − 3x + 1, what is f(3)?',['4','10','12','16','22'],1,'2(9) − 9 + 1 = 18 − 9 + 1 = 10.'),
+H('Functions','If f(x) = x + 4 and g(x) = 3x, what is f(g(2))?',['9','10','12','14','18'],1,'g(2) = 6. f(6) = 6 + 4 = 10. Work inside-out.'),
+H('Functions','For which value of x is f(x) = 1/(x − 4) undefined?',['0','−4','4','1/4','It is defined for all x'],2,'Denominator can\'t be 0: x − 4 = 0 → x = 4.'),
+H('Functions','What is the vertex of y = (x − 3)² + 2?',['(−3, 2)','(3, 2)','(3, −2)','(−3, −2)','(2, 3)'],1,'Vertex form y = (x − h)² + k has vertex (h, k) = (3, 2).'),
+H('Functions','A population starts at 500 and doubles every 3 years. What is it after 9 years?',['1,500','2,000','3,000','4,000','4,500'],3,'9 years = 3 doublings. 500 × 2³ = 500 × 8 = 4,000.'),
+H('Functions','What is log₂ 32?',['4','5','6','16','30'],1,'2⁵ = 32, so log₂ 32 = 5.'),
+H('Functions','Which is equivalent to (2x³)² · x?',['2x⁶','2x⁷','4x⁶','4x⁷','4x⁹'],3,'(2x³)² = 4x⁶. Times x → 4x⁷. (Square the 2 too!)'),
+H('Functions','If 2^(x+1) = 32, what is x?',['3','4','5','15','16'],1,'32 = 2⁵ → x + 1 = 5 → x = 4.'),
+H('Functions','What is the 20th term of the arithmetic sequence 4, 7, 10, 13, …?',['57','60','61','64','80'],2,'aₙ = a₁ + (n−1)d = 4 + 19(3) = 61.'),
+H('Functions','What is the 8th term of the geometric sequence 3, 6, 12, 24, …?',['192','256','384','768','1,536'],2,'aₙ = 3 · 2^(n−1) → 3 · 2⁷ = 3 · 128 = 384.'),
+H('Functions','What is the value of 8^(2/3)?',['2','4','6','16','64'],1,'Cube root of 8 = 2, then square: 2² = 4.'),
+H('Geometry','A rectangle has perimeter 30. Its length is twice its width. What is its area?',['25','50','75','100','200'],1,'2(w + 2w) = 30 → 6w = 30 → w = 5, l = 10. Area = 50.'),
+H('Geometry','A circle has circumference 10π. What is its area?',['5π','10π','25π','50π','100π'],2,'C = 2πr → r = 5. Area = πr² = 25π.'),
+H('Geometry','A right triangle has legs 9 and 12. What is the hypotenuse?',['13','14','15','17','21'],2,'It\'s a 3-4-5 triangle ×3 → 9-12-15.'),
+H('Geometry','Two angles of a triangle measure 35° and 65°. What is the third angle?',['70°','75°','80°','85°','90°'],2,'Angles sum to 180°: 180 − 35 − 65 = 80°.'),
+H('Geometry','What is the sum of the interior angles of a hexagon?',['540°','600°','720°','900°','1080°'],2,'(n − 2) × 180 = 4 × 180 = 720°.'),
+H('Geometry','A 3-4-5 triangle is similar to a larger triangle with hypotenuse 15. What is the larger triangle\'s perimeter?',['12','24','36','45','60'],2,'Scale factor = 15/5 = 3. Perimeter 12 × 3 = 36.'),
+H('Geometry','A cylinder has radius 3 and height 5. What is its volume?',['15π','30π','45π','90π','135π'],2,'V = πr²h = π(9)(5) = 45π.'),
+H('Geometry','What is the distance between (1, 2) and (7, 10)?',['8','10','12','14','√48'],1,'√[(7−1)² + (10−2)²] = √(36 + 64) = √100 = 10.'),
+H('Geometry','What is the midpoint of the segment with endpoints (−2, 4) and (6, 10)?',['(2, 7)','(4, 14)','(4, 7)','(2, 3)','(−4, −3)'],0,'Average the coordinates: ((−2+6)/2, (4+10)/2) = (2, 7).'),
+H('Geometry','A circle has radius 6. What is the length of an arc with a central angle of 60°?',['π','2π','3π','6π','12π'],1,'Arc = (60/360) × 2π(6) = (1/6)(12π) = 2π.'),
+H('Geometry','In a 30-60-90 triangle the shorter leg is 5. What is the longer leg?',['5√2','5√3','10','10√3','15'],1,'Sides are x, x√3, 2x. Shorter leg 5 → longer leg 5√3, hypotenuse 10.'),
+H('Geometry','What is the radius of the circle x² + y² − 6x + 4y − 3 = 0?',['3','4','√13','16','√3'],1,'Complete the square: (x−3)² + (y+2)² = 3 + 9 + 4 = 16 → r = 4.'),
+H('Trigonometry','In a right triangle, sin θ = 3/5. What is cos θ (θ acute)?',['3/4','4/5','5/4','5/3','3/5'],1,'Opposite = 3, hypotenuse = 5, so adjacent = 4 (3-4-5). cos = 4/5.'),
+H('Trigonometry','What is tan 45°?',['0','1/2','√2/2','1','√3'],3,'At 45° opposite = adjacent, so tan = 1.'),
+H('Trigonometry','If sin θ = 0.6, what is cos²θ?',['0.36','0.4','0.64','0.8','1.6'],2,'sin²θ + cos²θ = 1 → cos²θ = 1 − 0.36 = 0.64.'),
+H('Trigonometry','A right triangle has a 30° angle and hypotenuse 12. How long is the side opposite the 30° angle?',['6','6√2','6√3','12','12√3'],0,'Side opposite 30° = half the hypotenuse = 6.'),
+H('Trigonometry','What is 135° in radians?',['π/4','π/2','2π/3','3π/4','5π/6'],3,'135 × (π/180) = 3π/4.'),
+H('Trigonometry','What is the period of y = sin(2x)?',['π/2','π','2π','4π','1'],1,'Period = 2π/|b| = 2π/2 = π.'),
+H('Trigonometry','If cos θ = 5/13 with θ acute, what is sin θ?',['5/12','12/13','13/12','8/13','12/5'],1,'5-12-13 triangle: opposite = 12, so sin = 12/13.'),
+H('Stats & Probability','What is the mean of 4, 8, 10, 12, 16?',['8','10','11','12','50'],1,'Sum = 50; 50 ÷ 5 = 10.'),
+H('Stats & Probability','What is the median of 3, 9, 4, 12, 7, 15?',['7','8','9','10','12'],1,'Sort: 3, 4, 7, 9, 12, 15. Middle two are 7 and 9 → median 8.'),
+H('Stats & Probability','The mean of 5 numbers is 12. A sixth number, 18, is added. What is the new mean?',['12.5','13','14','15','18'],1,'Old total = 60. New total = 78. 78 ÷ 6 = 13.'),
+H('Stats & Probability','A bag has 4 red and 6 blue marbles. What is the probability of drawing a blue one?',['2/5','1/2','3/5','2/3','3/4'],2,'6 blue out of 10 total = 3/5.'),
+H('Stats & Probability','Two fair dice are rolled. What is the probability the sum is 7?',['1/12','1/9','1/6','1/4','7/36'],2,'6 ways (1-6, 2-5, 3-4, 4-3, 5-2, 6-1) out of 36 = 1/6.'),
+H('Stats & Probability','An outfit is 1 of 3 shirts, 1 of 4 pants, and 1 of 2 hats. How many outfits?',['9','12','18','24','36'],3,'Multiply choices: 3 × 4 × 2 = 24.'),
+H('Stats & Probability','In how many ways can 5 people stand in a line?',['25','60','100','120','240'],3,'5! = 5·4·3·2·1 = 120.'),
+H('Stats & Probability','How many ways can a committee of 2 be chosen from 6 people?',['12','15','30','36','720'],1,'C(6,2) = (6·5)/(2·1) = 15. Order doesn\'t matter.'),
+H('Number & Quantity','Simplify √72.',['3√8','6√2','8√3','12√6','36'],1,'√72 = √(36·2) = 6√2.'),
+H('Number & Quantity','What is (2 + 3i)(2 − 3i)? (i² = −1)',['−5','5','13','−13','4 + 9i'],2,'(a+b)(a−b) = a² − b² → 4 − 9i² = 4 + 9 = 13.'),
+H('Number & Quantity','What is (3 × 10⁴)(2 × 10³)?',['5 × 10⁷','6 × 10⁷','6 × 10¹²','5 × 10¹²','6 × 10¹⁰'],1,'Multiply 3·2 = 6; add exponents 4 + 3 = 7 → 6 × 10⁷.'),
+H('Number & Quantity','What is the least common multiple of 12 and 18?',['6','24','36','72','216'],2,'12 = 2²·3, 18 = 2·3². LCM = 2²·3² = 36.'),
+H('Number & Quantity','What is 15% of 240?',['24','30','36','40','48'],2,'10% = 24, 5% = 12 → 36.'),
+H('Number & Quantity','Which is the greatest?',['0.4','2/5','3/8','0.41','7/20'],3,'As decimals: 0.4, 0.4, 0.375, 0.41, 0.35. Greatest = 0.41.'),
+H('Number & Quantity','A home sells for $240,000. The listing agent gets 3% of the price. How much is that?',['$2,400','$4,800','$7,200','$12,000','$72,000'],2,'0.03 × 240,000 = $7,200.'),
+H('Number & Quantity','If 5 is added to twice a number, the result is 27. What is the number?',['8','9','11','13','16'],2,'2n + 5 = 27 → 2n = 22 → n = 11.')
+];
+
+/* ---------- endless generators ---------- */
+const GEN=[
+()=>{const x=R(-9,12),a=R(2,9),b=R(-15,15),c=a*x+b;return mk('Algebra',`Solve for x: ${a}x ${b<0?'−':'+'} ${Math.abs(b)} = ${c}`,x,[x+1,x-1,c-b,(c+b)/a|0,-x],`Undo the constant: ${a}x = ${c-b}. Divide by ${a}: x = ${x}.`)},
+()=>{const x1=R(1,5),x2=R(-6,-1),sm=x1+x2,p=x1*x2;return mk('Algebra',`What is the sum of the solutions of (x − ${x1})(x + ${-x2}) = 0?`,sm,[p,-sm,x1,-x2,sm+1],`Solutions are x = ${x1} and x = ${x2}. Sum = ${sm}.`)},
+()=>{const x1=R(1,9),y1=R(1,9),m=R(-4,5)||2,dx=R(1,5),x2=x1+dx,y2=y1+m*dx;return mk('Algebra',`What is the slope of the line through (${x1}, ${y1}) and (${x2}, ${y2})?`,m,[-m,m+1,dx,1/m===Infinity?0:Math.round(10/m)/10,m-1],`Slope = (${y2} − ${y1})/(${x2} − ${x1}) = ${y2-y1}/${dx} = ${m}.`)},
+()=>{const a=R(2,6),b=R(2,6),c=R(1,4),e=a+b-c;return mk('Algebra',`If x ≠ 0, then x^${a} · x^${b} ÷ x^${c} = x^k. What is k?`,e,[a*b-c,a+b+c,a*b,e+1,e-1],`Multiply → add exponents, divide → subtract: ${a} + ${b} − ${c} = ${e}.`)},
+()=>{const p=R(2,6),q=R(2,7),r=R(1,9),ans=p*q;return mk('Algebra',`A plumber charges $${p*5} to arrive plus $${q} per minute of work. What is the cost for ${r+10} minutes?`,p*5+q*(r+10),[q*(r+10),p*5+q*r,(p*5+q)*(r+10),p*5+r+10,p*5+q*(r+9)],`Cost = ${p*5} + ${q}(${r+10}) = ${p*5+q*(r+10)}.`)},
+()=>{const P=R(20,40)*10000,pr=pick([4,5,6]);const half=P*pr/100/2;return mk('Number & Quantity',`A home sells for $${fmt(P)}. The total commission is ${pr}%, split equally between two agents. How much does one agent receive?`,'$'+fmt(half),['$'+fmt(half*2),'$'+fmt(half/2),'$'+fmt(P*pr/1000),'$'+fmt(half*10)],`Total = ${pr}% × ${fmt(P)} = $${fmt(half*2)}. Split in half = $${fmt(half)}.`)},
+()=>{const p=R(4,20)*10,d=pick([10,20,25,30,40]),ans=p*(100-d)/100;return mk('Number & Quantity',`A $${p} item is ${d}% off. What is the sale price?`,'$'+ans,['$'+(p*d/100),'$'+(p-d),'$'+(p+p*d/100),'$'+(ans+10),'$'+(ans-10),'$'+(ans+20)],`Pay ${100-d}%: ${p} × ${(100-d)/100} = $${ans}.`)},
+()=>{const n=R(4,6),m=R(70,95),sc=[];let t=0;for(let i=0;i<n-1;i++){const v=R(60,100);sc.push(v);t+=v}const need=m*n-t;if(need<0||need>100)return GEN[0]();return mk('Stats & Probability',`Your first ${n-1} test scores are ${sc.join(', ')}. What must your next score be to have a mean of ${m} over ${n} tests?`,need,[need+5,need-5,m,need+10,need-10],`Total needed = ${m} × ${n} = ${m*n}. You have ${t}. Need ${m*n} − ${t} = ${need}.`)},
+()=>{const t=pick([[3,4,5],[5,12,13],[8,15,17],[7,24,25],[6,8,10]]),k=pick([1,2,3]),[a,b,c]=t.map(v=>v*k);return mk('Geometry',`A right triangle has legs ${a} and ${b}. What is the length of the hypotenuse?`,c,[a+b,c+1,c-1,Math.round(Math.sqrt(a*a-b*b>0?a*a-b*b:a*b)),c+2],`a² + b² = ${a*a} + ${b*b} = ${c*c}, so c = ${c}.`)},
+()=>{const r=R(2,12),ask=pick(['area','circumference']),ans=ask==='area'?r*r+'π':2*r+'π';return mk('Geometry',`A circle has radius ${r}. What is its ${ask}? (in terms of π)`,ans,ask==='area'?[2*r+'π',r+'π',4*r*r+'π',r*r*2+'π',(r+1)*(r+1)+'π']:[r*r+'π',r+'π',4*r+'π',r*r*2+'π',(2*r+2)+'π',(2*r+5)+'π',(r*r+7)+'π'],ask==='area'?`A = πr² = ${r*r}π.`:`C = 2πr = ${2*r}π.`)},
+()=>{const l=R(4,15),w=R(2,l-1);const ask=pick(['perimeter','area']);return mk('Geometry',`A rectangle is ${l} by ${w}. What is its ${ask}?`,ask==='area'?l*w:2*(l+w),ask==='area'?[2*(l+w),l+w,l*w+l,l*w-w]:[l*w,l+w,2*l+w,4*l],ask==='area'?`Area = l × w = ${l*w}.`:`Perimeter = 2(${l} + ${w}) = ${2*(l+w)}.`)},
+()=>{const n=R(5,10);return mk('Geometry',`What is the sum of the interior angles of a polygon with ${n} sides?`,(n-2)*180,[n*180,(n-1)*180,(n-3)*180,(n-2)*90,360],`(n − 2) × 180 = ${n-2} × 180 = ${(n-2)*180}°.`)},
+()=>{const x1=R(-5,3),y1=R(-5,3),dx=pick([3,6,5,8,12]),dy=({3:4,6:8,5:12,8:6,12:5})[dx],d=Math.sqrt(dx*dx+dy*dy);return mk('Geometry',`What is the distance between (${x1}, ${y1}) and (${x1+dx}, ${y1+dy})?`,d,[dx+dy,d+1,d-1,dx*dy,d+2],`√(${dx}² + ${dy}²) = √${dx*dx+dy*dy} = ${d}.`)},
+()=>{const a=R(1,5),b=R(-6,6),c=R(-5,5),x=R(-3,4),v=a*x*x+b*x+c;const bt=b<0?`− ${-b}x`:`+ ${b}x`,ct=c<0?`− ${-c}`:`+ ${c}`;return mk('Functions',`If f(x) = ${a}x² ${bt} ${ct}, what is f(${x})?`,v,[a*x*x+b*x-c,(a*x)*(a*x)+b*x+c,v+a,v-b,-v],`Plug in: ${a}(${x})² + (${b})(${x}) + (${c}) = ${a*x*x} + ${b*x} + ${c} = ${v}.`)},
+()=>{const a1=R(-5,10),d=R(2,8),n=R(10,30),ans=a1+(n-1)*d;return mk('Functions',`An arithmetic sequence starts ${a1}, ${a1+d}, ${a1+2*d}, … What is term number ${n}?`,ans,[ans+d,ans-d,a1+n*d,a1*n+d,ans+2*d],`aₙ = a₁ + (n−1)d = ${a1} + ${n-1}(${d}) = ${ans}.`)},
+()=>{const t=pick([[3,4,5],[5,12,13],[8,15,17]]),[a,b,c]=t,fn=pick(['sin','cos','tan']);const ans=fn==='sin'?`${a}/${c}`:fn==='cos'?`${b}/${c}`:`${a}/${b}`;const all=[`${a}/${c}`,`${b}/${c}`,`${a}/${b}`,`${b}/${a}`,`${c}/${a}`,`${c}/${b}`].filter(x=>x!==ans);return mk('Trigonometry',`In a right triangle, the side opposite angle θ is ${a}, the adjacent side is ${b}, and the hypotenuse is ${c}. What is ${fn} θ?`,ans,shuffle(all),`SOH-CAH-TOA: sin = opp/hyp, cos = adj/hyp, tan = opp/adj. So ${fn} θ = ${ans}.`)},
+()=>{const r=R(3,9),b=R(2,8),g=R(2,8),c=pick(['red','blue','green']),n=({red:r,blue:b,green:g})[c],tot=r+b+g,gg=gcd(n,tot);const ans=`${n/gg}/${tot/gg}`;const w=[`${n}/${tot+1}`,`${tot-n}/${tot}`,`1/${tot}`,`${n}/${tot-n}`,`${(n/gg)+1}/${tot/gg}`].filter(x=>x!==ans);return mk('Stats & Probability',`A jar has ${r} red, ${b} blue, and ${g} green marbles. One is picked at random. What is the probability it is ${c}?`,ans,w,`${n} ${c} out of ${tot} total = ${n}/${tot}${gg>1?' = '+ans:''}.`)},
+()=>{const n=R(5,10);return mk('Stats & Probability',`How many different 2-person teams can be chosen from ${n} people?`,n*(n-1)/2,[n*(n-1),n*n,n*2,n*(n-1)/2+n],`C(${n},2) = ${n}·${n-1}/2 = ${n*(n-1)/2}. Order doesn't matter, so divide by 2.`)},
+()=>{const s=R(40,65),t=R(2,5),ans=s*t;return mk('Number & Quantity',`A car drives at ${s} mph for ${t} hours. How many miles does it travel?`,ans,[s+t,ans+s,ans-s,s*t*2],`Distance = rate × time = ${s} × ${t} = ${ans}.`)}
+];
+function genQ(){const q=pick(GEN)();q.id='g'+Math.random();return q}
+
+/* ---------- state ---------- */
+let S;
+const KEY='actmath.v1';
+function load(){try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  S=S||{};S.stats=S.stats||{};S.missed=S.missed||[];S.seen=S.seen||[];S.tests=S.tests||[];S.total=S.total||{r:0,n:0};
+  TOPICS.forEach(t=>S.stats[t]=S.stats[t]||{r:0,n:0})}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function record(q,ok){const s=S.stats[q.t];s.n++;S.total.n++;if(ok){s.r++;S.total.r++}
+  S.missed=S.missed.filter(m=>m.q!==q.q);
+  if(!ok)S.missed.push({t:q.t,q:q.q,c:q.c,a:q.a,e:q.e});
+  if(S.missed.length>80)S.missed.shift();save()}
+function getQs(n,topics){
+  const all=topics&&topics.length?topics:TOPICS;
+  const pool=shuffle(BANK.filter(b=>all.includes(b.t)));
+  const unseen=pool.filter(b=>!S.seen.includes(b.id)),used=[];
+  const out=[];
+  for(const b of unseen.concat(pool.filter(b=>S.seen.includes(b.id)))){if(out.length>=Math.ceil(n*0.6))break;out.push(b)}
+  let guard=0;const texts=new Set(out.map(o=>o.q));
+  while(out.length<n&&guard++<800){const q=genQ();if(all.includes(q.t)&&!texts.has(q.q)){texts.add(q.q);out.push(q)}}
+  // if a topic has no generator (rare), top up from bank
+  for(const b of pool){if(out.length>=n)break;if(!out.includes(b))out.push(b)}
+  out.forEach(q=>{if(q.id&&q.id[0]!=='g'&&!S.seen.includes(q.id))S.seen.push(q.id)});
+  if(S.seen.length>BANK.length)S.seen=[];save();
+  return shuffle(out).slice(0,n);
+}
+const SCALE=[[0,1],[5,8],[10,12],[15,14],[20,16],[25,18],[30,20],[35,22],[40,24],[45,27],[50,30],[55,33],[58,35],[60,36]];
+function scaled(raw60){for(let i=1;i<SCALE.length;i++){const[a,x]=SCALE[i-1],[b,y]=SCALE[i];if(raw60<=b)return Math.round(x+(y-x)*(raw60-a)/(b-a))}return 36}
+
+/* ---------- views ---------- */
+const app=document.getElementById('app');let view='home',timer=null;
+const NAV=[['home','Home'],['practice','Practice'],['test','Timed Test'],['missed','Missed'],['sheet','Cheat Sheet']];
+function go(v){clearInterval(timer);view=v;window.scrollTo(0,0);draw()}
+function draw(){
+  document.getElementById('nav').innerHTML=NAV.map(([k,l])=>`<button class="${view===k?'on':''}" onclick="go('${k}')">${l}${k==='missed'&&S.missed.length?' ('+S.missed.length+')':''}</button>`).join('');
+  ({home,practice,test,missed,sheet})[view]();
+}
+const pct=s=>s.n?Math.round(100*s.r/s.n):0;
+
+function home(){
+  const last=S.tests.slice(-1)[0],best=S.tests.reduce((m,t)=>Math.max(m,t.scaled),0);
+  const est=S.total.n>=10?scaled(Math.round(60*S.total.r/S.total.n)):null;
+  app.innerHTML=`
+  <div class="card"><h2>Let's get that score up! 💪</h2>
+  <p class="mute">Practice by topic, take timed tests, and review every miss. Small wins add up — aim for 20 questions a day.</p>
+  <div class="grid" style="margin-top:12px">
+    <div><div class="big">${est??'–'}</div><div class="mute">Estimated ACT Math score${est?'':' (answer 10+ questions)'}</div></div>
+    <div><div class="big">${S.total.n?pct(S.total):'–'}${S.total.n?'%':''}</div><div class="mute">Accuracy · ${S.total.n} questions answered</div></div>
+    <div><div class="big">${best||'–'}</div><div class="mute">Best timed-test estimate${last?' · last '+last.scaled:''}</div></div>
+  </div></div>
+  <div class="card"><h3>Start here</h3><div class="grid">
+    <button class="tile" onclick="startPractice(TOPICS,10)"><b>⚡ Quick 10</b><span class="mute">Mixed questions, instant feedback</span></button>
+    <button class="tile" onclick="go('practice')"><b>🎯 Topic drill</b><span class="mute">Pick your weak spots</span></button>
+    <button class="tile" onclick="go('test')"><b>⏱️ Timed test</b><span class="mute">Real ACT pacing: 1 min/question</span></button>
+    <button class="tile" onclick="go('missed')"><b>🔁 Review missed</b><span class="mute">${S.missed.length} waiting</span></button>
+  </div></div>
+  <div class="card"><h3>Your topics</h3>
+  ${TOPICS.map(t=>{const s=S.stats[t];return`<div><b>${t}</b> <span class="mute">${s.n?pct(s)+'% ('+s.r+'/'+s.n+')':'not started'}</span><div class="bar"><i style="width:${pct(s)}%"></i></div></div>`}).join('')}
+  ${S.total.n?'<button class="btn sm alt" onclick="if(confirm(\'Reset all progress?\')){localStorage.removeItem(KEY);load();draw()}">Reset progress</button>':''}</div>
+  <div class="card"><h3>🧠 Score-boosting rules</h3><ul>
+  <li><b>Never leave a blank</b> — no penalty for guessing.</li>
+  <li>Do easy ones first (questions get harder as you go). Circle tough ones and return.</li>
+  <li><b>Plug in the answer choices</b> when the algebra looks messy.</li>
+  <li>Draw the picture. Label every side and angle.</li>
+  <li>Re-read what the question <i>asks</i> (x? or 2x? area or perimeter?).</li></ul></div>`;
+}
+
+/* ---- practice ---- */
+let P={};
+function practice(){
+  const sel=P.sel||[];
+  app.innerHTML=`<div class="card"><h2>Topic Drill</h2><p class="mute">Pick topics (none = all), then start. You get instant feedback and an explanation after every question.</p>
+  <div class="chips">${TOPICS.map(t=>`<span class="chip ${sel.includes(t)?'on':''}" onclick="tog('${t}')">${t} · ${pct(S.stats[t])}%</span>`).join('')}</div>
+  <div class="chips">${[10,20,30].map(n=>`<button class="btn sm" onclick="startPractice(P.sel||[],${n})">Start ${n} questions</button>`).join('')}</div></div>`;
+}
+function tog(t){P.sel=P.sel||[];const i=P.sel.indexOf(t);i<0?P.sel.push(t):P.sel.splice(i,1);practice()}
+function startPractice(topics,n,qs){view='run';P={sel:topics===TOPICS?[]:topics,mode:'practice',qs:qs||getQs(n,topics),i:0,right:0,ans:null,res:[]};runQ()}
+function runQ(){
+  const q=P.qs[P.i];
+  app.innerHTML=`<div class="card pop"><div class="top"><span class="tag">${q.t}</span><span class="mute">Question ${P.i+1} of ${P.qs.length} · ✅ ${P.right}</span></div>
+  <div class="dots">${P.qs.map((_,i)=>`<i class="${i<P.i?'c':i===P.i?'a':''}"></i>`).join('')}</div>
+  <div class="q">${q.q}</div>
+  ${q.c.map((c,i)=>`<button class="opt" onclick="answer(${i})"><span class="L">${LET[i]}</span><span>${c}</span></button>`).join('')}
+  <div id="fb"></div></div>`;
+}
+function answer(i){
+  if(P.ans!==null)return;P.ans=i;const q=P.qs[P.i],ok=i===q.a;
+  if(ok)P.right++;record(q,ok);P.res.push({q,pick:i,ok});
+  document.querySelectorAll('.opt').forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});
+  const last=P.i===P.qs.length-1;
+  document.getElementById('fb').innerHTML=`<div class="exp"><b>${ok?'✅ Correct!':'❌ Not quite — answer is '+LET[q.a]+'.'}</b>\n${q.e}</div><button class="btn" onclick="nextQ()">${last?'See results':'Next →'}</button>`;
+}
+function nextQ(){P.ans=null;P.i++;P.i>=P.qs.length?practiceDone():runQ()}
+function practiceDone(){
+  const n=P.qs.length;
+  app.innerHTML=`<div class="card"><h2>Done! ${P.right}/${n} (${Math.round(100*P.right/n)}%)</h2>
+  <p>${P.right/n>=.8?'🔥 Excellent work!':P.right/n>=.6?'👍 Solid — review the misses below.':'💡 Every miss is a chance to learn. Read the explanations!'}</p>
+  <button class="btn" onclick="startPractice(P.sel,${n})">Go again</button> <button class="btn alt" onclick="go('home')">Home</button></div>
+  <div class="card"><h3>Review</h3>${review(P.res)}</div>`;
+}
+function review(res){return res.map((r,k)=>`<div class="rv ${r.ok?'ok':'no'}"><b>${k+1}. ${r.q.q}</b><br>Your answer: ${r.pick==null?'<i>blank</i>':LET[r.pick]+') '+r.q.c[r.pick]} ${r.ok?'✅':'❌'} · Correct: ${LET[r.q.a]}) ${r.q.c[r.q.a]}<div class="mute" style="white-space:pre-line">${r.q.e}</div></div>`).join('')}
+
+/* ---- timed test ---- */
+function test(){
+  app.innerHTML=`<div class="card"><h2>Timed Test</h2><p class="mute">Real ACT pacing: <b>1 minute per question</b>. Mixed topics. You can skip and come back. Missed questions go to your review list.</p>
+  <div class="grid">${[[15,'Mini','15 min'],[30,'Half','30 min'],[60,'Full ACT Math','60 min']].map(([n,l,m])=>`<button class="tile" onclick="startTest(${n})"><b>${l}</b><span class="mute">${n} questions · ${m}</span></button>`).join('')}</div></div>`;
+}
+function startTest(n){view='run';P={mode:'test',qs:getQs(n),i:0,picks:new Array(n).fill(null),left:n*60};
+  clearInterval(timer);timer=setInterval(()=>{P.left--;const el=document.getElementById('tm');if(el){el.textContent=mmss(P.left);el.classList.toggle('low',P.left<=60)}if(P.left<=0)finishTest()},1000);tq()}
+const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function tq(){
+  const q=P.qs[P.i],n=P.qs.length;
+  app.innerHTML=`<div class="card pop"><div class="top"><span class="tag">Question ${P.i+1} of ${n}</span><span class="timer ${P.left<=60?'low':''}" id="tm">${mmss(P.left)}</span></div>
+  <div class="dots">${P.qs.map((_,i)=>`<i class="${P.picks[i]!==null?'c':''} ${i===P.i?'a':''}" style="cursor:pointer" onclick="P.i=${i};tq()"></i>`).join('')}</div>
+  <div class="q">${q.q}</div>
+  ${q.c.map((c,i)=>`<button class="opt ${P.picks[P.i]===i?'sel':''}" onclick="P.picks[P.i]=${i};tq()"><span class="L">${LET[i]}</span><span>${c}</span></button>`).join('')}
+  <div class="chips"><button class="btn sm alt" ${P.i?'':'disabled'} onclick="P.i--;tq()">← Back</button>
+  <button class="btn sm" ${P.i<n-1?'':'disabled'} onclick="P.i++;tq()">Next →</button>
+  <button class="btn sm alt" onclick="if(confirm('Submit test? ${P.picks.filter(x=>x===null).length} unanswered.'))finishTest()">Submit test</button></div></div>`;
+}
+function finishTest(){
+  clearInterval(timer);const n=P.qs.length;let right=0;const res=[];
+  P.qs.forEach((q,i)=>{const p=P.picks[i],ok=p===q.a;if(ok)right++;res.push({q,pick:p,ok});if(p!==null)record(q,ok);else{S.missed=S.missed.filter(m=>m.q!==q.q);S.missed.push({t:q.t,q:q.q,c:q.c,a:q.a,e:q.e})}});
+  const sc=scaled(Math.round(60*right/n));S.tests.push({n,right,scaled:sc,d:Date.now()});save();
+  const by={};res.forEach(r=>{by[r.q.t]=by[r.q.t]||{r:0,n:0};by[r.q.t].n++;if(r.ok)by[r.q.t].r++});
+  const prev=S.tests.slice(0,-1).slice(-1)[0];
+  app.innerHTML=`<div class="card"><h2>Test complete</h2><div class="grid"><div><div class="big">${right}/${n}</div><div class="mute">Correct</div></div><div><div class="big">≈ ${sc}</div><div class="mute">Estimated ACT Math score${prev?` (last: ${prev.scaled})`:''}</div></div></div>
+  <p class="mute">Estimate only — real scaling varies by test form.</p>
+  <table>${Object.entries(by).map(([t,s])=>`<tr><td>${t}</td><td>${s.r}/${s.n}</td><td style="width:40%"><div class="bar"><i style="width:${pct(s)}%"></i></div></td></tr>`).join('')}</table>
+  <p><button class="btn" onclick="go('test')">Another test</button> <button class="btn alt" onclick="go('missed')">Drill my misses</button></p></div>
+  <div class="card"><h3>Full review</h3>${review(res)}</div>`;
+  view='done';
+}
+
+/* ---- missed ---- */
+function missed(){
+  if(!S.missed.length){app.innerHTML=`<div class="card"><h2>Nothing missed 🎉</h2><p class="mute">Miss a question and it lands here so you can beat it next time.</p></div>`;return}
+  app.innerHTML=`<div class="card"><h2>Missed questions (${S.missed.length})</h2><p class="mute">Get one right and it leaves the list.</p>
+  <button class="btn" onclick="startPractice([],0,shuffle(S.missed).slice(0,15).map(m=>({...m,id:'m'})))">Drill up to 15</button></div>`;
+}
+
+/* ---- cheat sheet ---- */
+function sheet(){
+  app.innerHTML=`
+  <div class="card"><h2>Formula Cheat Sheet</h2><p class="mute">The ACT doesn't give you formulas — know these cold.</p></div>
+  <div class="card"><h3>Algebra & Functions</h3><table>
+  <tr><td>Slope</td><td>m = (y₂ − y₁)/(x₂ − x₁)</td></tr>
+  <tr><td>Slope-intercept</td><td>y = mx + b</td></tr>
+  <tr><td>Quadratic formula</td><td>x = (−b ± √(b² − 4ac)) / 2a</td></tr>
+  <tr><td>Sum / product of roots</td><td>−b/a  and  c/a</td></tr>
+  <tr><td>Discriminant</td><td>b² − 4ac: &gt;0 two real, =0 one, &lt;0 none real</td></tr>
+  <tr><td>Vertex form</td><td>y = a(x − h)² + k → vertex (h, k)</td></tr>
+  <tr><td>Difference of squares</td><td>a² − b² = (a − b)(a + b)</td></tr>
+  <tr><td>Exponent rules</td><td>xᵃ·xᵇ = xᵃ⁺ᵇ · (xᵃ)ᵇ = xᵃᵇ · xᵃ/xᵇ = xᵃ⁻ᵇ · x⁻ᵃ = 1/xᵃ · x^(a/b) = ᵇ√(xᵃ)</td></tr>
+  <tr><td>Log</td><td>log_b(x) = y ⇔ bʸ = x</td></tr>
+  <tr><td>Arithmetic seq.</td><td>aₙ = a₁ + (n − 1)d</td></tr>
+  <tr><td>Geometric seq.</td><td>aₙ = a₁ · rⁿ⁻¹</td></tr>
+  <tr><td>Percent change</td><td>(new − old)/old × 100</td></tr>
+  <tr><td>Rate</td><td>distance = rate × time · Work: 1/a + 1/b = 1/t</td></tr></table></div>
+  <div class="card"><h3>Geometry</h3><table>
+  <tr><td>Triangle area</td><td>½·b·h</td></tr>
+  <tr><td>Circle</td><td>A = πr² · C = 2πr · arc = (θ/360)·2πr · sector = (θ/360)·πr²</td></tr>
+  <tr><td>Pythagorean</td><td>a² + b² = c² · triples 3-4-5, 5-12-13, 8-15-17, 7-24-25</td></tr>
+  <tr><td>45-45-90</td><td>x, x, x√2</td></tr>
+  <tr><td>30-60-90</td><td>x, x√3, 2x</td></tr>
+  <tr><td>Polygon angle sum</td><td>(n − 2)·180°</td></tr>
+  <tr><td>Trapezoid</td><td>½(b₁ + b₂)h</td></tr>
+  <tr><td>Box / cylinder / sphere</td><td>lwh · πr²h · (4/3)πr³</td></tr>
+  <tr><td>Cone / pyramid</td><td>⅓·(base area)·h</td></tr>
+  <tr><td>Distance / midpoint</td><td>√[(x₂−x₁)² + (y₂−y₁)²] · ((x₁+x₂)/2, (y₁+y₂)/2)</td></tr>
+  <tr><td>Circle equation</td><td>(x − h)² + (y − k)² = r²</td></tr></table></div>
+  <div class="card"><h3>Trig</h3><table>
+  <tr><td>SOH-CAH-TOA</td><td>sin = opp/hyp · cos = adj/hyp · tan = opp/adj</td></tr>
+  <tr><td>Identity</td><td>sin²θ + cos²θ = 1 · tanθ = sinθ/cosθ</td></tr>
+  <tr><td>Radians</td><td>180° = π · multiply degrees by π/180</td></tr>
+  <tr><td>Special values</td><td>sin 30° = ½, sin 45° = √2/2, sin 60° = √3/2 · cos is the reverse</td></tr>
+  <tr><td>Period</td><td>sin(bx), cos(bx): 2π/b</td></tr></table></div>
+  <div class="card"><h3>Stats & Counting</h3><table>
+  <tr><td>Mean</td><td>sum ÷ count · (mean × count = sum)</td></tr>
+  <tr><td>Median</td><td>middle of sorted list (average the middle two if even)</td></tr>
+  <tr><td>Probability</td><td>favorable ÷ total · "and" → multiply · "or" → add</td></tr>
+  <tr><td>Permutations</td><td>n! · nPr = n!/(n−r)!</td></tr>
+  <tr><td>Combinations</td><td>nCr = n!/(r!(n−r)!)</td></tr>
+  <tr><td>Counting principle</td><td>multiply the choices at each step</td></tr>
+  <tr><td>Complex</td><td>i² = −1 · (a+bi)(a−bi) = a² + b²</td></tr></table></div>
+  <div class="card"><h3>⏱️ Test-day plan</h3><ul>
+  <li>60 questions / 60 minutes → about <b>1 minute each</b>. Q1–20 should take ~15 min, saving time for the hard ones.</li>
+  <li>Skip anything over 90 seconds, mark it, come back.</li>
+  <li>With 2 minutes left, <b>bubble a guess</b> for every blank.</li>
+  <li>Use your calculator for arithmetic, not for thinking. Check that it's in the right mode (degrees vs radians!).</li>
+  <li>Sleep, eat breakfast, arrive early. You've got this. 💜</li></ul></div>`;
+}
+load();draw();
+</script>
+</body>
+</html>
